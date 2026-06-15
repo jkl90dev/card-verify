@@ -39,13 +39,17 @@ Route::get('/agent/seed-database', function () {
     }
     
     try {
+        // Run migrations
+        Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        
+        // Truncate and seed
         Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
         Illuminate\Support\Facades\DB::table('voucher_types')->truncate();
         Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
         
         Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
-        return 'Base de données peuplée avec succès !';
+        return 'Migrations exécutées et base de données peuplée avec succès !';
     } catch (\Exception $e) {
-        return 'Erreur lors du seeding : ' . $e->getMessage();
+        return 'Erreur lors du traitement : ' . $e->getMessage();
     }
 })->name('agent.seed-database');
