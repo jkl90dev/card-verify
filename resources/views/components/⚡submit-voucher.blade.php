@@ -374,14 +374,14 @@ new class extends Component {
                  init() {
                      this.scrollInterval = setInterval(() => {
                          this.scrollRight();
-                     }, 4000);
+                     }, 2000);
                  },
                  stopAuto() {
                      clearInterval(this.scrollInterval);
                  }
              }"
              @mouseenter="stopAuto()"
-             @mouseleave="scrollInterval = setInterval(() => { scrollRight() }, 4000)">
+             @mouseleave="scrollInterval = setInterval(() => { scrollRight() }, 2000)">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div class="text-left">
