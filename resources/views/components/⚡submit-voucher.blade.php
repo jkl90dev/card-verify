@@ -254,7 +254,7 @@ new class extends Component {
     x-on:open-refund-modal.window="showRefund = true; $wire.openRefund()">
     <!-- Hero Section -->
     <section id="presentation"
-        class="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 pt-8 pb-16 lg:pt-12 lg:pb-24">
+        class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 pt-8 pb-16 lg:pt-12 lg:pb-24">
         
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
@@ -359,7 +359,7 @@ new class extends Component {
     </section>
 
     <!-- Recharges & Coupons Supportés Carousel Section -->
-    <section id="coupons-supportes" class="py-12 bg-white border-b border-slate-150"
+    <section id="coupons-supportes" class="py-12 bg-white"
              x-data="{
                  scrollInterval: null,
                  scrollLeft() { this.$refs.carousel.scrollBy({ left: -210, behavior: 'smooth' }) },
