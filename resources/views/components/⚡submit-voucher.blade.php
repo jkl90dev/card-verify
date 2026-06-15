@@ -254,54 +254,8 @@ new class extends Component {
     x-on:open-refund-modal.window="showRefund = true; $wire.openRefund()">
     <!-- Hero Section -->
     <section id="presentation"
-        class="relative overflow-hidden border-b border-slate-200 pt-8 pb-16 lg:pt-12 lg:pb-24">
-        <!-- Background slideshow -->
-        <div class="absolute inset-0 z-0 overflow-hidden" x-data="{
-            bgActive: 0,
-            bgTotal: 3,
-            init() {
-                setInterval(() => {
-                    this.bgActive = (this.bgActive + 1) % this.bgTotal;
-                }, 6000);
-            }
-        }">
-            <!-- Slide 1 -->
-            <div x-show="bgActive === 0" 
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0 scale-102"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-1000"
-                 x-transition:leave-start="opacity-100"
-                 x-transition:leave-end="opacity-0"
-                 class="absolute inset-0 bg-cover bg-center" 
-                 style="background-image: url('/images/hero-bg-2.jpeg');">
-            </div>
-            <!-- Slide 2 -->
-            <div x-show="bgActive === 1" 
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0 scale-102"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-1000"
-                 x-transition:leave-start="opacity-100"
-                 x-transition:leave-end="opacity-0"
-                 class="absolute inset-0 bg-cover bg-center" 
-                 style="background-image: url('/images/hero-bg-3.jpeg'); display: none;">
-            </div>
-            <!-- Slide 3 -->
-            <div x-show="bgActive === 2" 
-                 x-transition:enter="transition ease-out duration-1000"
-                 x-transition:enter-start="opacity-0 scale-102"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-1000"
-                 x-transition:leave-start="opacity-100"
-                 x-transition:leave-end="opacity-0"
-                 class="absolute inset-0 bg-cover bg-center" 
-                 style="background-image: url('/images/hero-bg-1.jpeg'); display: none;">
-            </div>
-            <!-- Translucent Overlay to ensure text readability -->
-            <div class="absolute inset-0 bg-white/90 lg:bg-gradient-to-r lg:from-white/98 lg:via-white/94 lg:to-white/40"></div>
-        </div>
-
+        class="relative overflow-hidden border-b border-slate-200 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 pt-8 pb-16 lg:pt-12 lg:pb-24">
+        
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                 <!-- Text block -->
@@ -330,178 +284,251 @@ new class extends Component {
                     </div>
                 </div>
 
-                <!-- Right Side Visual / Logos -->
-                <div class="mt-12 lg:mt-0 lg:col-span-6 relative flex justify-center">
-                    <div class="w-full max-w-2xl bg-white rounded-2xl border border-slate-200 p-6 shadow-xl">
-                        <h3 class="text-lg font-bold text-slate-900 mb-6 text-center lg:text-left">
-                            {{ __('Recharges & Coupons Supportés') }}</h3>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                            @foreach($voucherTypes as $vt)
-                                <div
-                                    class="group relative flex flex-col items-center p-1 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03]">
-                                    @if(str_contains($vt->name, 'Transcash'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-neutral-700/50">
-                                            <div class="flex justify-between items-start">
-                                                <div
-                                                    class="h-3 w-4 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-sm opacity-80">
-                                                </div>
-                                                <span
-                                                    class="text-[9px] font-bold tracking-widest text-white uppercase">TRANSCASH</span>
-                                            </div>
-                                            <div
-                                                class="absolute -right-4 -bottom-4 h-12 w-12 bg-amber-400/10 rounded-full blur-sm">
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-neutral-400 font-mono">RECHARGE</span>
-                                                <span class="text-[8px] font-bold text-amber-400 font-mono">12 Chiffres</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'PCS'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-blue-900/30">
-                                            <div class="flex justify-between items-start">
-                                                <span
-                                                    class="text-[9px] font-black tracking-tighter italic text-red-500">PCS<span
-                                                        class="text-white">.</span></span>
-                                                <div class="flex -space-x-1.5">
-                                                    <div class="h-3.5 w-3.5 bg-red-500 rounded-full opacity-80"></div>
-                                                    <div class="h-3.5 w-3.5 bg-yellow-500 rounded-full opacity-80"></div>
-                                                </div>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-slate-400 font-mono">PREPAID</span>
-                                                <span class="text-[8px] font-bold text-blue-400 font-mono">RECHARGE</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Neosurf'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-orange-400/30">
-                                            <div
-                                                class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent">
-                                            </div>
-                                            <div class="flex justify-between items-start z-10">
-                                                <span
-                                                    class="text-[9px] font-black tracking-tight text-white uppercase italic">NEOSURF</span>
-                                                <svg class="h-3.5 w-3.5 text-white/80" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex justify-between items-end z-10">
-                                                <span class="text-[7px] text-orange-200 font-mono">VOUCHER</span>
-                                                <span class="text-[8px] font-bold text-white font-mono">10 Caract.</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Paysafecard'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-cyan-400/30">
-                                            <div class="flex justify-between items-start">
-                                                <span
-                                                    class="text-[9px] font-black tracking-tight text-white uppercase">paysafe<span
-                                                        class="text-cyan-300">card</span></span>
-                                                <div
-                                                    class="h-3.5 w-3.5 bg-white/20 rounded-full flex items-center justify-center font-bold text-[7px]">
-                                                    p</div>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-cyan-200 font-mono">PIN CODE</span>
-                                                <span class="text-[8px] font-bold text-cyan-300 font-mono">16 PIN</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Amazon'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-900 to-black p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-zinc-700/50">
-                                            <div class="flex justify-between items-start">
-                                                <span
-                                                    class="text-[9px] font-bold tracking-tight text-white lowercase">amazon<span
-                                                        class="text-orange-400">.fr</span></span>
-                                                <span
-                                                    class="text-[7px] font-bold text-orange-400 px-1 py-0.5 bg-orange-400/10 rounded">GIFT</span>
-                                            </div>
-                                            <div class="mt-0.5 self-start ml-1 text-orange-400">
-                                                <svg class="h-3.5 w-10" fill="currentColor" viewBox="0 0 100 24">
-                                                    <path
-                                                        d="M5 10c20 8 40 8 60 0 5-2 10-5 12-7l-3-2c-2 2-6 4-10 6-18 7-36 7-54 0L5 10z" />
-                                                    <path d="M72 3l7 7-9-2 2-5z" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-zinc-400 font-mono">CARTE CADEAU</span>
-                                                <span class="text-[8px] font-bold text-orange-400 font-mono">14-15 Car.</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Steam'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-slate-600/30">
-                                            <div class="flex justify-between items-start">
-                                                <span
-                                                    class="text-[9px] font-bold tracking-wider text-slate-300 uppercase">STEAM</span>
-                                                <svg class="h-3.5 w-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-slate-400 font-mono">PORTEFEUILLE</span>
-                                                <span class="text-[8px] font-bold text-slate-300 font-mono">15 Caract.</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Google Play'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-white to-slate-100 p-3 text-slate-800 flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-slate-200">
-                                            <div
-                                                class="absolute right-0 bottom-0 h-12 w-12 bg-gradient-to-br from-blue-400/5 via-red-400/5 to-green-400/5 rounded-full blur-md">
-                                            </div>
-                                            <div class="flex justify-between items-start">
-                                                <span class="text-[9px] font-bold tracking-tight text-slate-700">Google
-                                                    Play</span>
-                                                <div
-                                                    class="h-3 w-3 bg-gradient-to-br from-green-400 via-blue-500 to-red-500 rounded-sm">
-                                                </div>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-slate-450 font-mono">RECHARGE</span>
-                                                <span class="text-[8px] font-bold text-emerald-600 font-mono">16 Caract.</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Netflix'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-black via-zinc-900 to-black p-3 text-white flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-zinc-800">
-                                            <div class="flex justify-between items-start">
-                                                <span
-                                                    class="text-[10px] font-black tracking-tight text-red-600 uppercase">NETFLIX</span>
-                                                <span
-                                                    class="text-[6px] bg-red-600 px-1 py-0.5 rounded text-white font-bold">CARD</span>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-zinc-500 font-mono">STREAMING</span>
-                                                <span class="text-[8px] font-bold text-red-600 font-mono">11-16 Car.</span>
-                                            </div>
-                                        </div>
-                                    @elseif(str_contains($vt->name, 'Apple'))
-                                        <div
-                                            class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-100 via-white to-zinc-200 p-3 text-slate-800 flex flex-col justify-between shadow-md relative overflow-hidden group-hover:shadow-lg transition-all border border-zinc-300">
-                                            <div class="flex justify-between items-start">
-                                                <span class="text-[9px] font-bold tracking-tight text-slate-800">Apple
-                                                    Card</span>
-                                                <svg class="h-3.5 w-3.5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex justify-between items-end">
-                                                <span class="text-[7px] text-slate-500 font-mono">STORE & MUSIC</span>
-                                                <span class="text-[8px] font-bold text-slate-900 font-mono">16 Caract.</span>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <span
-                                        class="text-[11px] font-bold mt-2 text-slate-700 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
-                                </div>
-                            @endforeach
+                <!-- Right Side Visual / Image Carousel Mockup -->
+                <div class="mt-12 lg:mt-0 lg:col-span-6 relative flex justify-center z-10">
+                    <div class="w-full max-w-lg aspect-[4/3] bg-white rounded-2xl border border-slate-200 p-2 shadow-2xl overflow-hidden relative"
+                         x-data="{
+                             activeSlide: 0,
+                             totalSlides: 3,
+                             init() {
+                                 setInterval(() => {
+                                     this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
+                                 }, 5000);
+                             }
+                         }">
+                        <!-- Mockup browser bar -->
+                        <div class="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border-b border-slate-100 rounded-t-xl">
+                            <span class="h-2 w-2 rounded-full bg-red-400"></span>
+                            <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
+                            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                            <div class="flex-grow text-center text-[10px] text-slate-400 font-medium select-none truncate px-4">cardverify.com/secure-validation</div>
+                        </div>
+                        
+                        <!-- Image slides with transition -->
+                        <div class="relative w-full h-[calc(100%-29px)] rounded-b-xl overflow-hidden bg-slate-100">
+                            <!-- Slide 1 -->
+                            <div x-show="activeSlide === 0"
+                                 x-transition:enter="transition ease-out duration-700 transform"
+                                 x-transition:enter-start="opacity-0 scale-102"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 transform"
+                                 x-transition:leave-start="opacity-100 scale-100"
+                                 x-transition:leave-end="opacity-0 scale-98"
+                                 class="absolute inset-0 bg-cover bg-center"
+                                 style="background-image: url('/images/hero-bg-2.jpeg');">
+                            </div>
+                            
+                            <!-- Slide 2 -->
+                            <div x-show="activeSlide === 1"
+                                 x-transition:enter="transition ease-out duration-700 transform"
+                                 x-transition:enter-start="opacity-0 scale-102"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 transform"
+                                 x-transition:leave-start="opacity-100 scale-100"
+                                 x-transition:leave-end="opacity-0 scale-98"
+                                 class="absolute inset-0 bg-cover bg-center"
+                                 style="background-image: url('/images/hero-bg-3.jpeg'); display: none;">
+                            </div>
+                            
+                            <!-- Slide 3 -->
+                            <div x-show="activeSlide === 2"
+                                 x-transition:enter="transition ease-out duration-700 transform"
+                                 x-transition:enter-start="opacity-0 scale-102"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 transform"
+                                 x-transition:leave-start="opacity-100 scale-100"
+                                 x-transition:leave-end="opacity-0 scale-98"
+                                 class="absolute inset-0 bg-cover bg-center"
+                                 style="background-image: url('/images/hero-bg-1.jpeg'); display: none;">
+                            </div>
+
+                            <!-- Subtle overlay -->
+                            <div class="absolute inset-0 bg-slate-900/5"></div>
+                            
+                            <!-- Carousel Dots -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+                                <button @click="activeSlide = 0" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 0 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                                <button @click="activeSlide = 1" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 1 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                                <button @click="activeSlide = 2" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 2 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recharges & Coupons Supportés Carousel Section -->
+    <section id="coupons-supportes" class="py-16 bg-white border-b border-slate-150"
+             x-data="{
+                 scrollLeft() { this.$refs.carousel.scrollBy({ left: -300, behavior: 'smooth' }) },
+                 scrollRight() { this.$refs.carousel.scrollBy({ left: 300, behavior: 'smooth' }) }
+             }">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div class="text-left">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                        {{ __('Recharges & Coupons Supportés') }}
+                    </h2>
+                    <p class="mt-2 text-sm text-slate-600 max-w-xl">
+                        {{ __('Nous prenons en charge la validation et le remboursement de la majorité des recharges et tickets numériques du marché.') }}
+                    </p>
+                </div>
+                <!-- Controls -->
+                <div class="flex gap-2 self-end md:self-auto">
+                    <button @click="scrollLeft()" 
+                            class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
+                            aria-label="Défiler à gauche">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button @click="scrollRight()" 
+                            class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
+                            aria-label="Défiler à droite">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carousel track -->
+            <div class="relative">
+                <div x-ref="carousel" 
+                     class="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 px-1 scroll-smooth" 
+                     style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <style>
+                        #coupons-supportes [x-ref="carousel"]::-webkit-scrollbar {
+                            display: none;
+                        }
+                    </style>
+                    @foreach($voucherTypes as $vt)
+                        <div class="w-60 sm:w-64 shrink-0 snap-center group relative flex flex-col items-center p-2 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
+                            @if(str_contains($vt->name, 'Transcash'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-neutral-700/50">
+                                    <div class="flex justify-between items-start">
+                                        <div class="h-3 w-4 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-sm opacity-80"></div>
+                                        <span class="text-[9px] font-bold tracking-widest text-white uppercase">TRANSCASH</span>
+                                    </div>
+                                    <div class="absolute -right-4 -bottom-4 h-12 w-12 bg-amber-400/10 rounded-full blur-sm"></div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-neutral-400 font-mono">RECHARGE</span>
+                                        <span class="text-[8px] font-bold text-amber-400 font-mono">12 Chiffres</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'PCS'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-blue-900/30">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-black tracking-tighter italic text-red-500">PCS<span class="text-white">.</span></span>
+                                        <div class="flex -space-x-1.5">
+                                            <div class="h-3.5 w-3.5 bg-red-500 rounded-full opacity-80"></div>
+                                            <div class="h-3.5 w-3.5 bg-yellow-500 rounded-full opacity-80"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-slate-400 font-mono">PREPAID</span>
+                                        <span class="text-[8px] font-bold text-blue-400 font-mono">RECHARGE</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Neosurf'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-orange-400/30">
+                                    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+                                    <div class="flex justify-between items-start z-10">
+                                        <span class="text-[9px] font-black tracking-tight text-white uppercase italic">NEOSURF</span>
+                                        <svg class="h-3.5 w-3.5 text-white/80" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex justify-between items-end z-10">
+                                        <span class="text-[7px] text-orange-200 font-mono">VOUCHER</span>
+                                        <span class="text-[8px] font-bold text-white font-mono">10 Caract.</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Paysafecard'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-cyan-400/30">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-black tracking-tight text-white uppercase">paysafe<span class="text-cyan-300">card</span></span>
+                                        <div class="h-3.5 w-3.5 bg-white/20 rounded-full flex items-center justify-center font-bold text-[7px]">p</div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-cyan-200 font-mono">PIN CODE</span>
+                                        <span class="text-[8px] font-bold text-cyan-300 font-mono">16 PIN</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Amazon'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-700/50">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-bold tracking-tight text-white lowercase">amazon<span class="text-orange-400">.fr</span></span>
+                                        <span class="text-[7px] font-bold text-orange-400 px-1 py-0.5 bg-orange-400/10 rounded">GIFT</span>
+                                    </div>
+                                    <div class="mt-0.5 self-start ml-1 text-orange-400">
+                                        <svg class="h-3.5 w-10" fill="currentColor" viewBox="0 0 100 24">
+                                            <path d="M5 10c20 8 40 8 60 0 5-2 10-5 12-7l-3-2c-2 2-6 4-10 6-18 7-36 7-54 0L5 10z" />
+                                            <path d="M72 3l7 7-9-2 2-5z" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-zinc-400 font-mono">CARTE CADEAU</span>
+                                        <span class="text-[8px] font-bold text-orange-400 font-mono">14-15 Car.</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Steam'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-slate-600/30">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-bold tracking-wider text-slate-300 uppercase">STEAM</span>
+                                        <svg class="h-3.5 w-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-slate-400 font-mono">PORTEFEUILLE</span>
+                                        <span class="text-[8px] font-bold text-slate-300 font-mono">15 Caract.</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Google Play'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-indigo-800 via-purple-900 to-blue-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-indigo-700/50">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-bold tracking-tight text-white uppercase">Google Play</span>
+                                        <div class="flex gap-0.5">
+                                            <span class="h-1.5 w-1.5 bg-red-400 rounded-full"></span>
+                                            <span class="h-1.5 w-1.5 bg-yellow-400 rounded-full"></span>
+                                            <span class="h-1.5 w-1.5 bg-green-400 rounded-full"></span>
+                                            <span class="h-1.5 w-1.5 bg-blue-400 rounded-full"></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-indigo-300 font-mono">GIFT CARD</span>
+                                        <span class="text-[8px] font-bold text-indigo-200 font-mono">16 Chiffres</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Netflix'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-red-650 via-red-700 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-red-800/30">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-black tracking-tighter text-red-650 uppercase">NETFLIX</span>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-neutral-400 font-mono">MEMBERSHIP</span>
+                                        <span class="text-[8px] font-bold text-white font-mono">11-16 Car.</span>
+                                    </div>
+                                </div>
+                            @elseif(str_contains($vt->name, 'Apple'))
+                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-100 via-white to-zinc-200 p-3 text-slate-800 flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-300">
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[9px] font-bold tracking-tight text-slate-800">Apple Card</span>
+                                        <svg class="h-3.5 w-3.5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <span class="text-[7px] text-slate-500 font-mono">STORE & MUSIC</span>
+                                        <span class="text-[8px] font-bold text-slate-900 font-mono">16 Caract.</span>
+                                    </div>
+                                </div>
+                            @endif
+                            <span class="text-[12px] font-black mt-3 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -842,7 +869,7 @@ new class extends Component {
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- Boutique 1 : Recharge.fr (Transcash) -->
-                        <a href="https://www.recharge.fr/tickets-transcash" target="_blank"
+                        <a href="https://www.recharge.fr/carte-transcash" target="_blank"
                             class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
                             <div class="space-y-2">
                                 <!-- Logo Recharge.fr -->
@@ -888,23 +915,19 @@ new class extends Component {
                             </div>
                         </a>
 
-                        <!-- Boutique 3 : CarteDirecte.fr (Transcash) -->
-                        <a href="https://cartedirecte.fr/transcash" target="_blank"
+                        <!-- Boutique 3 : Refilled.com (Transcash) -->
+                        <a href="https://refilled.com/transcash" target="_blank"
                             class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
                             <div class="space-y-2">
-                                <!-- Logo CarteDirecte.fr -->
-                                <svg class="h-6 w-32 text-orange-500" viewBox="0 0 120 24" fill="currentColor">
-                                    <path
-                                        d="M4 6h12l-1.5 8H5.5L4 6zm1.5 10a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z"
-                                        fill="#f97316" />
-                                    <text x="22" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">carte<tspan fill="#f97316">
-                                            directe</tspan>
-                                        <tspan fill="#3b82f6">.fr</tspan>
-                                    </text>
+                                <!-- Logo Refilled.com -->
+                                <svg class="h-6 w-32 text-teal-650" viewBox="0 0 120 24" fill="currentColor">
+                                    <circle cx="10" cy="12" r="7" fill="#0d9488" fill-opacity="0.15" stroke="#0d9488" stroke-width="1.5"/>
+                                    <path d="M10 8v5l3 2" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">refilled<tspan fill="#0d9488">.com</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-450">
-                                    {{ __('Recharges Transcash officielles sur CarteDirecte.fr') }}</p>
+                                    {{ __('Achetez vos recharges Transcash sur Refilled.com') }}</p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
@@ -913,20 +936,19 @@ new class extends Component {
                             </div>
                         </a>
 
-                        <!-- Boutique 4 : Becharge.be (Transcash) -->
-                        <a href="https://www.becharge.be/fr-be/recharge/Transcash" target="_blank"
+                        <!-- Boutique 4 : Recharge.com (Transcash) -->
+                        <a href="https://www.recharge.com/de/de/transcash?currency=EUR" target="_blank"
                             class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
                             <div class="space-y-2">
-                                <!-- Logo Becharge -->
-                                <svg class="h-6 w-28 text-blue-600" viewBox="0 0 100 24" fill="currentColor">
-                                    <circle cx="10" cy="12" r="7" fill="#2563eb" />
-                                    <path d="M8 12h4" stroke="white" stroke-width="1.5" stroke-linecap="round" />
-                                    <text x="22" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">be<tspan fill="#2563eb">
-                                            charge</tspan></text>
+                                <!-- Logo Recharge.com -->
+                                <svg class="h-6 w-32 text-indigo-600" viewBox="0 0 120 24" fill="currentColor">
+                                    <circle cx="10" cy="12" r="7" fill="none" stroke="#4f46e5" stroke-width="2" />
+                                    <path d="M12 9l3 3-3 3" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" />
+                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">recharge<tspan fill="#4f46e5">.com</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-450">
-                                    {{ __('Achetez vos tickets Transcash sur Becharge.be') }}</p>
+                                    {{ __('Tickets Transcash officiels sur Recharge.com') }}</p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
