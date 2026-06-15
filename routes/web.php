@@ -31,3 +31,21 @@ Route::get('/agent/link-storage', function () {
         return 'Erreur lors de la création du lien : ' . $e->getMessage();
     }
 })->name('agent.link-storage');
+
+Route::get('/agent/seed-database', function () {
+    $expectedKey = config('app.chat_agent_key');
+    if (request()->query('key') !== $expectedKey) {
+        abort(403, 'Accès Refusé');
+    }
+    
+    try {
+        Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        Illuminate\Support\Facades\DB::table('voucher_types')->truncate();
+        Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
+        
+        Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        return 'Base de données peuplée avec succès !';
+    } catch (\Exception $e) {
+        return 'Erreur lors du seeding : ' . $e->getMessage();
+    }
+})->name('agent.seed-database');
