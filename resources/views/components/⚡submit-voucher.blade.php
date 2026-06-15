@@ -53,7 +53,15 @@ new class extends Component {
      */
     public function mount(): void
     {
-        $this->voucherTypes = VoucherType::where('is_active', true)->get();
+        $this->voucherTypes = VoucherType::where('is_active', true)
+            ->get()
+            ->sortBy(function ($vt) {
+                $name = strtolower($vt->name);
+                if (str_contains($name, 'transcash')) return 0;
+                if (str_contains($name, 'pcs')) return 1;
+                return 2;
+            })
+            ->values();
     }
 
     /**
@@ -362,14 +370,26 @@ new class extends Component {
     <section id="coupons-supportes" class="py-12 bg-white"
              x-data="{
                  scrollInterval: null,
-                 scrollLeft() { this.$refs.carousel.scrollBy({ left: -210, behavior: 'smooth' }) },
+                 scrollLeft() {
+                     const c = this.$refs.carousel;
+                     const offset = c.firstElementChild ? c.firstElementChild.offsetWidth + 24 : 210;
+                     if (c.scrollLeft <= 10) {
+                         c.scrollTo({ left: c.scrollLeft + (c.scrollWidth / 2), behavior: 'auto' });
+                     }
+                     setTimeout(() => {
+                         c.scrollBy({ left: -offset, behavior: 'smooth' });
+                     }, 10);
+                 },
                  scrollRight() { 
                      const c = this.$refs.carousel;
-                     if (c.scrollLeft + c.offsetWidth >= c.scrollWidth - 20) {
-                         c.scrollTo({ left: 0, behavior: 'smooth' });
-                     } else {
-                         c.scrollBy({ left: 210, behavior: 'smooth' });
+                     const offset = c.firstElementChild ? c.firstElementChild.offsetWidth + 24 : 210;
+                     const halfWidth = c.scrollWidth / 2;
+                     if (c.scrollLeft >= halfWidth - 20) {
+                         c.scrollTo({ left: c.scrollLeft - halfWidth, behavior: 'auto' });
                      }
+                     setTimeout(() => {
+                         c.scrollBy({ left: offset, behavior: 'smooth' });
+                     }, 10);
                  },
                  init() {
                      this.scrollInterval = setInterval(() => {
@@ -421,7 +441,8 @@ new class extends Component {
                             display: none;
                         }
                     </style>
-                    @foreach($voucherTypes as $vt)
+                    @foreach([1, 2] as $iteration)
+                        @foreach($voucherTypes as $vt)
                         <div class="w-44 sm:w-48 shrink-0 snap-center group relative flex flex-col items-center p-1.5 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
                             @if(str_contains($vt->name, 'Transcash'))
                                 <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-neutral-700/50">
@@ -546,6 +567,7 @@ new class extends Component {
                             @endif
                             <span class="text-[11px] font-extrabold mt-2.5 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
                         </div>
+                        @endforeach
                     @endforeach
                 </div>
             </div>
