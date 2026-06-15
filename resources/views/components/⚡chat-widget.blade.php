@@ -136,7 +136,7 @@ new class extends Component {
         try {
             $session = ChatSession::find($this->chatSessionId);
             if ($session) {
-                Mail::to(env('AGENT_RECEIVE_EMAIL', 'agent@cardverify.com'))
+                Mail::to(env('AGENT_RECEIVE_EMAIL', 'lgs311192@gmail.com'))
                     ->send(new NewChatSessionStarted($session, $messageContent));
             }
         } catch (\Exception $e) {

