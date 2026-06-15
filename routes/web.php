@@ -19,7 +19,7 @@ Route::get('/lang/{locale}', function (string $locale) {
 })->name('locale.switch');
 
 Route::get('/agent/link-storage', function () {
-    $expectedKey = env('CHAT_AGENT_KEY', 'secret123');
+    $expectedKey = config('app.chat_agent_key');
     if (request()->query('key') !== $expectedKey) {
         abort(403, 'Accès Refusé');
     }

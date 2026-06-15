@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'chat_agent_key' => env('CHAT_AGENT_KEY', 'secret9090'),
+
 ];

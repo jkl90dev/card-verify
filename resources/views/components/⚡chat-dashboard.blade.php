@@ -27,7 +27,7 @@ new class extends Component {
      */
     public function mount(): void
     {
-        $expectedKey = env('CHAT_AGENT_KEY', 'secret123');
+        $expectedKey = config('app.chat_agent_key');
         $key = request()->query('key');
 
         if (request()->query('logout')) {
@@ -53,7 +53,7 @@ new class extends Component {
      */
     public function verifyCode(): void
     {
-        $expectedKey = env('CHAT_AGENT_KEY', 'secret123');
+        $expectedKey = config('app.chat_agent_key');
         if ($this->securityCode === $expectedKey) {
             session(['chat_agent_authorized' => true]);
             $this->isAuthorized = true;
