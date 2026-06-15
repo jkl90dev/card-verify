@@ -299,7 +299,7 @@ new class extends Component {
                  style="background-image: url('/images/hero-bg-1.jpeg'); display: none;">
             </div>
             <!-- Translucent Overlay to ensure text readability -->
-            <div class="absolute inset-0 bg-slate-50/25"></div>
+            <div class="absolute inset-0 bg-white/90 lg:bg-gradient-to-r lg:from-white/98 lg:via-white/94 lg:to-white/40"></div>
         </div>
 
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
