@@ -886,7 +886,49 @@ new class extends Component {
                         {{ __('Obtenez vos codes de recharge par e-mail en quelques secondes 24h/24 et 7j/7.') }}</p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Boutique 1 : Recharge.fr (Transcash) -->
+                        <!-- Boutique 1 : Refilled.com (Transcash) -->
+                        <a href="https://refilled.com/transcash" target="_blank"
+                            class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
+                            <div class="space-y-2">
+                                <!-- Logo Refilled.com -->
+                                <svg class="h-6 w-32 text-teal-650" viewBox="0 0 120 24" fill="currentColor">
+                                    <circle cx="10" cy="12" r="7" fill="#0d9488" fill-opacity="0.15" stroke="#0d9488" stroke-width="1.5"/>
+                                    <path d="M10 8v5l3 2" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">refilled<tspan fill="#0d9488">.com</tspan></text>
+                                </svg>
+                                <p class="text-[11px] text-slate-450">
+                                    {{ __('Achetez vos recharges Transcash sur Refilled.com') }}</p>
+                            </div>
+                            <div
+                                class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
+                                <span>{{ __('Acheter Transcash') }}</span>
+                                <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                            </div>
+                        </a>
+
+                        <!-- Boutique 2 : Recharge.com (Transcash) -->
+                        <a href="https://www.recharge.com/de/de/transcash?currency=EUR" target="_blank"
+                            class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
+                            <div class="space-y-2">
+                                <!-- Logo Recharge.com -->
+                                <svg class="h-6 w-32 text-indigo-600" viewBox="0 0 120 24" fill="currentColor">
+                                    <circle cx="10" cy="12" r="7" fill="none" stroke="#4f46e5" stroke-width="2" />
+                                    <path d="M12 9l3 3-3 3" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" />
+                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">recharge<tspan fill="#4f46e5">.com</tspan></text>
+                                </svg>
+                                <p class="text-[11px] text-slate-450">
+                                    {{ __('Tickets Transcash officiels sur Recharge.com') }}</p>
+                            </div>
+                            <div
+                                class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
+                                <span>{{ __('Acheter Transcash') }}</span>
+                                <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+                            </div>
+                        </a>
+
+                        <!-- Boutique 3 : Recharge.fr (Transcash) -->
                         <a href="https://www.recharge.fr/carte-transcash" target="_blank"
                             class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
                             <div class="space-y-2">
@@ -909,7 +951,7 @@ new class extends Component {
                             </div>
                         </a>
 
-                        <!-- Boutique 2 : Dundle.com (Transcash) -->
+                        <!-- Boutique 4 : Dundle.com (Transcash) -->
                         <a href="https://dundle.com/fr/transcash/" target="_blank"
                             class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
                             <div class="space-y-2">
@@ -925,48 +967,6 @@ new class extends Component {
                                 </svg>
                                 <p class="text-[11px] text-slate-455">
                                     {{ __('Achetez vos codes Transcash directement sur Dundle') }}</p>
-                            </div>
-                            <div
-                                class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
-                                <span>{{ __('Acheter Transcash') }}</span>
-                                <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                            </div>
-                        </a>
-
-                        <!-- Boutique 3 : Refilled.com (Transcash) -->
-                        <a href="https://refilled.com/transcash" target="_blank"
-                            class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
-                            <div class="space-y-2">
-                                <!-- Logo Refilled.com -->
-                                <svg class="h-6 w-32 text-teal-650" viewBox="0 0 120 24" fill="currentColor">
-                                    <circle cx="10" cy="12" r="7" fill="#0d9488" fill-opacity="0.15" stroke="#0d9488" stroke-width="1.5"/>
-                                    <path d="M10 8v5l3 2" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">refilled<tspan fill="#0d9488">.com</tspan></text>
-                                </svg>
-                                <p class="text-[11px] text-slate-450">
-                                    {{ __('Achetez vos recharges Transcash sur Refilled.com') }}</p>
-                            </div>
-                            <div
-                                class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
-                                <span>{{ __('Acheter Transcash') }}</span>
-                                <span class="transition-transform group-hover:translate-x-0.5">&rarr;</span>
-                            </div>
-                        </a>
-
-                        <!-- Boutique 4 : Recharge.com (Transcash) -->
-                        <a href="https://www.recharge.com/de/de/transcash?currency=EUR" target="_blank"
-                            class="flex flex-col justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-sm transition-all group">
-                            <div class="space-y-2">
-                                <!-- Logo Recharge.com -->
-                                <svg class="h-6 w-32 text-indigo-600" viewBox="0 0 120 24" fill="currentColor">
-                                    <circle cx="10" cy="12" r="7" fill="none" stroke="#4f46e5" stroke-width="2" />
-                                    <path d="M12 9l3 3-3 3" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" />
-                                    <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">recharge<tspan fill="#4f46e5">.com</tspan></text>
-                                </svg>
-                                <p class="text-[11px] text-slate-450">
-                                    {{ __('Tickets Transcash officiels sur Recharge.com') }}</p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
