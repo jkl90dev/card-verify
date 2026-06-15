@@ -57,8 +57,10 @@ new class extends Component {
             ->get()
             ->sortBy(function ($vt) {
                 $name = strtolower($vt->name);
-                if (str_contains($name, 'transcash')) return 0;
-                if (str_contains($name, 'pcs')) return 1;
+                if (str_contains($name, 'transcash'))
+                    return 0;
+                if (str_contains($name, 'pcs'))
+                    return 1;
                 return 2;
             })
             ->values();
@@ -263,7 +265,7 @@ new class extends Component {
     <!-- Hero Section -->
     <section id="presentation"
         class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/30 pt-8 pb-16 lg:pt-12 lg:pb-24">
-        
+
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
                 <!-- Text block -->
@@ -295,7 +297,7 @@ new class extends Component {
                 <!-- Right Side Visual / Image Carousel Mockup -->
                 <div class="mt-12 lg:mt-0 lg:col-span-6 relative flex justify-center z-10">
                     <div class="w-full max-w-md aspect-[1.5] bg-white rounded-2xl border border-slate-200 p-2 shadow-2xl overflow-hidden relative"
-                         x-data="{
+                        x-data="{
                              activeSlide: 0,
                              totalSlides: 3,
                              init() {
@@ -305,59 +307,62 @@ new class extends Component {
                              }
                          }">
                         <!-- Mockup browser bar -->
-                        <div class="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border-b border-slate-100 rounded-t-xl">
+                        <div
+                            class="flex items-center gap-1.5 px-3 py-2 bg-slate-50 border-b border-slate-100 rounded-t-xl">
                             <span class="h-2 w-2 rounded-full bg-red-400"></span>
                             <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
                             <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                            <div class="flex-grow text-center text-[10px] text-slate-400 font-medium select-none truncate px-4">cardverify.com/secure-validation</div>
+                            <div
+                                class="flex-grow text-center text-[10px] text-slate-400 font-medium select-none truncate px-4">
+                                cardverify.com/secure-validation</div>
                         </div>
-                        
+
                         <!-- Image slides with transition -->
                         <div class="relative w-full h-[calc(100%-29px)] rounded-b-xl overflow-hidden bg-slate-100">
                             <!-- Slide 1 -->
                             <div x-show="activeSlide === 0"
-                                 x-transition:enter="transition ease-out duration-700 transform"
-                                 x-transition:enter-start="opacity-0 scale-102"
-                                 x-transition:enter-end="opacity-100 scale-100"
-                                 x-transition:leave="transition ease-in duration-500 transform"
-                                 x-transition:leave-start="opacity-100 scale-100"
-                                 x-transition:leave-end="opacity-0 scale-98"
-                                 class="absolute inset-0 bg-cover bg-center"
-                                 style="background-image: url('/images/hero-bg-2.jpeg');">
+                                x-transition:enter="transition ease-out duration-700 transform"
+                                x-transition:enter-start="opacity-0 scale-102"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-500 transform"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-98" class="absolute inset-0 bg-cover bg-center"
+                                style="background-image: url('/images/hero-bg-2.jpeg');">
                             </div>
-                            
+
                             <!-- Slide 2 -->
                             <div x-show="activeSlide === 1"
-                                 x-transition:enter="transition ease-out duration-700 transform"
-                                 x-transition:enter-start="opacity-0 scale-102"
-                                 x-transition:enter-end="opacity-100 scale-100"
-                                 x-transition:leave="transition ease-in duration-500 transform"
-                                 x-transition:leave-start="opacity-100 scale-100"
-                                 x-transition:leave-end="opacity-0 scale-98"
-                                 class="absolute inset-0 bg-cover bg-center"
-                                 style="background-image: url('/images/hero-bg-3.jpeg'); display: none;">
+                                x-transition:enter="transition ease-out duration-700 transform"
+                                x-transition:enter-start="opacity-0 scale-102"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-500 transform"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-98" class="absolute inset-0 bg-cover bg-center"
+                                style="background-image: url('/images/hero-bg-3.jpeg'); display: none;">
                             </div>
-                            
+
                             <!-- Slide 3 -->
                             <div x-show="activeSlide === 2"
-                                 x-transition:enter="transition ease-out duration-700 transform"
-                                 x-transition:enter-start="opacity-0 scale-102"
-                                 x-transition:enter-end="opacity-100 scale-100"
-                                 x-transition:leave="transition ease-in duration-500 transform"
-                                 x-transition:leave-start="opacity-100 scale-100"
-                                 x-transition:leave-end="opacity-0 scale-98"
-                                 class="absolute inset-0 bg-cover bg-center"
-                                 style="background-image: url('/images/hero-bg-1.jpeg'); display: none;">
+                                x-transition:enter="transition ease-out duration-700 transform"
+                                x-transition:enter-start="opacity-0 scale-102"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-500 transform"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-98" class="absolute inset-0 bg-cover bg-center"
+                                style="background-image: url('/images/hero-bg-1.jpeg'); display: none;">
                             </div>
 
                             <!-- Subtle overlay -->
                             <div class="absolute inset-0 bg-slate-900/5"></div>
-                            
+
                             <!-- Carousel Dots -->
                             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
-                                <button @click="activeSlide = 0" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 0 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
-                                <button @click="activeSlide = 1" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 1 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
-                                <button @click="activeSlide = 2" class="h-1.5 rounded-full transition-all duration-300" :class="activeSlide === 2 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                                <button @click="activeSlide = 0" class="h-1.5 rounded-full transition-all duration-300"
+                                    :class="activeSlide === 0 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                                <button @click="activeSlide = 1" class="h-1.5 rounded-full transition-all duration-300"
+                                    :class="activeSlide === 1 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
+                                <button @click="activeSlide = 2" class="h-1.5 rounded-full transition-all duration-300"
+                                    :class="activeSlide === 2 ? 'w-4 bg-white shadow' : 'w-1.5 bg-white/50 hover:bg-white/80'"></button>
                             </div>
                         </div>
                     </div>
@@ -367,14 +372,14 @@ new class extends Component {
     </section>
 
     <!-- Recharges & Coupons Supportés Carousel Section -->
-    <section id="coupons-supportes" class="py-12 bg-white"
-             x-data="{
+    <section id="coupons-supportes" class="py-12 bg-white" x-data="{
                  scrollInterval: null,
                  scrollLeft() {
                      const c = this.$refs.carousel;
                      const offset = c.firstElementChild ? c.firstElementChild.offsetWidth + 24 : 210;
-                     if (c.scrollLeft <= 10) {
-                         c.scrollTo({ left: c.scrollLeft + (c.scrollWidth / 2), behavior: 'auto' });
+                     const setWidth = c.scrollWidth / 5;
+                     if (c.scrollLeft <= setWidth * 2) {
+                         c.scrollTo({ left: c.scrollLeft + setWidth, behavior: 'auto' });
                      }
                      setTimeout(() => {
                          c.scrollBy({ left: -offset, behavior: 'smooth' });
@@ -383,15 +388,20 @@ new class extends Component {
                  scrollRight() { 
                      const c = this.$refs.carousel;
                      const offset = c.firstElementChild ? c.firstElementChild.offsetWidth + 24 : 210;
-                     const halfWidth = c.scrollWidth / 2;
-                     if (c.scrollLeft >= halfWidth - 20) {
-                         c.scrollTo({ left: c.scrollLeft - halfWidth, behavior: 'auto' });
+                     const setWidth = c.scrollWidth / 5;
+                     if (c.scrollLeft >= setWidth * 3) {
+                         c.scrollTo({ left: c.scrollLeft - setWidth, behavior: 'auto' });
                      }
                      setTimeout(() => {
                          c.scrollBy({ left: offset, behavior: 'smooth' });
                      }, 10);
                  },
                  init() {
+                     this.$nextTick(() => {
+                         const c = this.$refs.carousel;
+                         const setWidth = c.scrollWidth / 5;
+                         c.scrollTo({ left: setWidth * 2, behavior: 'auto' });
+                     });
                      this.scrollInterval = setInterval(() => {
                          this.scrollRight();
                      }, 1000);
@@ -399,9 +409,7 @@ new class extends Component {
                  stopAuto() {
                      clearInterval(this.scrollInterval);
                  }
-             }"
-             @mouseenter="stopAuto()"
-             @mouseleave="scrollInterval = setInterval(() => { scrollRight() }, 1000)">
+             }">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div class="text-left">
@@ -414,16 +422,16 @@ new class extends Component {
                 </div>
                 <!-- Controls -->
                 <div class="flex gap-2 self-end md:self-auto">
-                    <button @click="scrollLeft()" 
-                            class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
-                            aria-label="Défiler à gauche">
+                    <button @click="scrollLeft()"
+                        class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
+                        aria-label="Défiler à gauche">
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    <button @click="scrollRight()" 
-                            class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
-                            aria-label="Défiler à droite">
+                    <button @click="scrollRight()"
+                        class="h-10 w-10 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-800 shadow-sm active:scale-95 transition-all cursor-pointer select-none"
+                        aria-label="Défiler à droite">
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
@@ -433,140 +441,168 @@ new class extends Component {
 
             <!-- Carousel track -->
             <div class="relative">
-                <div x-ref="carousel" 
-                     class="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 px-1 scroll-smooth" 
-                     style="scrollbar-width: none; -ms-overflow-style: none;">
+                <div x-ref="carousel" class="flex gap-6 overflow-x-auto snap-x snap-mandatory py-4 px-1 scroll-smooth"
+                    style="scrollbar-width: none; -ms-overflow-style: none;">
                     <style>
                         #coupons-supportes [x-ref="carousel"]::-webkit-scrollbar {
                             display: none;
                         }
                     </style>
-                    @foreach([1, 2] as $iteration)
+                    @foreach([1, 2, 3, 4, 5] as $iteration)
                         @foreach($voucherTypes as $vt)
-                        <div class="w-44 sm:w-48 shrink-0 snap-center group relative flex flex-col items-center p-1.5 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
-                            @if(str_contains($vt->name, 'Transcash'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-neutral-700/50">
-                                    <div class="flex justify-between items-start">
-                                        <div class="h-3 w-4 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-sm opacity-80"></div>
-                                        <span class="text-[9px] font-bold tracking-widest text-white uppercase">TRANSCASH</span>
-                                    </div>
-                                    <div class="absolute -right-4 -bottom-4 h-12 w-12 bg-amber-400/10 rounded-full blur-sm"></div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-neutral-400 font-mono">RECHARGE</span>
-                                        <span class="text-[8px] font-bold text-amber-400 font-mono">12 Chiffres</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'PCS'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-blue-900/30">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-black tracking-tighter italic text-red-500">PCS<span class="text-white">.</span></span>
-                                        <div class="flex -space-x-1.5">
-                                            <div class="h-3.5 w-3.5 bg-red-500 rounded-full opacity-80"></div>
-                                            <div class="h-3.5 w-3.5 bg-yellow-500 rounded-full opacity-80"></div>
+                            <div
+                                class="w-44 sm:w-48 shrink-0 snap-center group relative flex flex-col items-center p-1.5 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
+                                @if(str_contains($vt->name, 'Transcash'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-neutral-700/50">
+                                        <div class="flex justify-between items-start">
+                                            <div
+                                                class="h-3 w-4 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-sm opacity-80">
+                                            </div>
+                                            <span class="text-[9px] font-bold tracking-widest text-white uppercase">TRANSCASH</span>
+                                        </div>
+                                        <div class="absolute -right-4 -bottom-4 h-12 w-12 bg-amber-400/10 rounded-full blur-sm">
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-neutral-400 font-mono">RECHARGE</span>
+                                            <span class="text-[8px] font-bold text-amber-400 font-mono">12 Chiffres</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-slate-400 font-mono">PREPAID</span>
-                                        <span class="text-[8px] font-bold text-blue-400 font-mono">RECHARGE</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Neosurf'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-orange-400/30">
-                                    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
-                                    <div class="flex justify-between items-start z-10">
-                                        <span class="text-[9px] font-black tracking-tight text-white uppercase italic">NEOSURF</span>
-                                        <svg class="h-3.5 w-3.5 text-white/80" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                                        </svg>
-                                    </div>
-                                    <div class="flex justify-between items-end z-10">
-                                        <span class="text-[7px] text-orange-200 font-mono">VOUCHER</span>
-                                        <span class="text-[8px] font-bold text-white font-mono">10 Caract.</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Paysafecard'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-cyan-400/30">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-black tracking-tight text-white uppercase">paysafe<span class="text-cyan-300">card</span></span>
-                                        <div class="h-3.5 w-3.5 bg-white/20 rounded-full flex items-center justify-center font-bold text-[7px]">p</div>
-                                    </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-cyan-200 font-mono">PIN CODE</span>
-                                        <span class="text-[8px] font-bold text-cyan-300 font-mono">16 PIN</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Amazon'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-700/50">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-bold tracking-tight text-white lowercase">amazon<span class="text-orange-400">.fr</span></span>
-                                        <span class="text-[7px] font-bold text-orange-400 px-1 py-0.5 bg-orange-400/10 rounded">GIFT</span>
-                                    </div>
-                                    <div class="mt-0.5 self-start ml-1 text-orange-400">
-                                        <svg class="h-3.5 w-10" fill="currentColor" viewBox="0 0 100 24">
-                                            <path d="M5 10c20 8 40 8 60 0 5-2 10-5 12-7l-3-2c-2 2-6 4-10 6-18 7-36 7-54 0L5 10z" />
-                                            <path d="M72 3l7 7-9-2 2-5z" />
-                                        </svg>
-                                    </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-zinc-400 font-mono">CARTE CADEAU</span>
-                                        <span class="text-[8px] font-bold text-orange-400 font-mono">14-15 Car.</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Steam'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-slate-600/30">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-bold tracking-wider text-slate-300 uppercase">STEAM</span>
-                                        <svg class="h-3.5 w-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                                        </svg>
-                                    </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-slate-400 font-mono">PORTEFEUILLE</span>
-                                        <span class="text-[8px] font-bold text-slate-300 font-mono">15 Caract.</span>
-                                    </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Google Play'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-indigo-800 via-purple-900 to-blue-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-indigo-700/50">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-bold tracking-tight text-white uppercase">Google Play</span>
-                                        <div class="flex gap-0.5">
-                                            <span class="h-1.5 w-1.5 bg-red-400 rounded-full"></span>
-                                            <span class="h-1.5 w-1.5 bg-yellow-400 rounded-full"></span>
-                                            <span class="h-1.5 w-1.5 bg-green-400 rounded-full"></span>
-                                            <span class="h-1.5 w-1.5 bg-blue-400 rounded-full"></span>
+                                @elseif(str_contains($vt->name, 'PCS'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-blue-900/30">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-black tracking-tighter italic text-red-500">PCS<span
+                                                    class="text-white">.</span></span>
+                                            <div class="flex -space-x-1.5">
+                                                <div class="h-3.5 w-3.5 bg-red-500 rounded-full opacity-80"></div>
+                                                <div class="h-3.5 w-3.5 bg-yellow-500 rounded-full opacity-80"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-slate-400 font-mono">PREPAID</span>
+                                            <span class="text-[8px] font-bold text-blue-400 font-mono">RECHARGE</span>
                                         </div>
                                     </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-indigo-300 font-mono">GIFT CARD</span>
-                                        <span class="text-[8px] font-bold text-indigo-200 font-mono">16 Chiffres</span>
+                                @elseif(str_contains($vt->name, 'Neosurf'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-orange-500 via-red-500 to-rose-600 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-orange-400/30">
+                                        <div
+                                            class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent">
+                                        </div>
+                                        <div class="flex justify-between items-start z-10">
+                                            <span
+                                                class="text-[9px] font-black tracking-tight text-white uppercase italic">NEOSURF</span>
+                                            <svg class="h-3.5 w-3.5 text-white/80" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex justify-between items-end z-10">
+                                            <span class="text-[7px] text-orange-200 font-mono">VOUCHER</span>
+                                            <span class="text-[8px] font-bold text-white font-mono">10 Caract.</span>
+                                        </div>
                                     </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Netflix'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-red-650 via-red-700 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-red-800/30">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[10px] font-black tracking-tighter text-red-650 uppercase">NETFLIX</span>
+                                @elseif(str_contains($vt->name, 'Paysafecard'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-cyan-400/30">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-black tracking-tight text-white uppercase">paysafe<span
+                                                    class="text-cyan-300">card</span></span>
+                                            <div
+                                                class="h-3.5 w-3.5 bg-white/20 rounded-full flex items-center justify-center font-bold text-[7px]">
+                                                p</div>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-cyan-200 font-mono">PIN CODE</span>
+                                            <span class="text-[8px] font-bold text-cyan-300 font-mono">16 PIN</span>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-neutral-400 font-mono">MEMBERSHIP</span>
-                                        <span class="text-[8px] font-bold text-white font-mono">11-16 Car.</span>
+                                @elseif(str_contains($vt->name, 'Amazon'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-800 via-zinc-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-700/50">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-bold tracking-tight text-white lowercase">amazon<span
+                                                    class="text-orange-400">.fr</span></span>
+                                            <span
+                                                class="text-[7px] font-bold text-orange-400 px-1 py-0.5 bg-orange-400/10 rounded">GIFT</span>
+                                        </div>
+                                        <div class="mt-0.5 self-start ml-1 text-orange-400">
+                                            <svg class="h-3.5 w-10" fill="currentColor" viewBox="0 0 100 24">
+                                                <path
+                                                    d="M5 10c20 8 40 8 60 0 5-2 10-5 12-7l-3-2c-2 2-6 4-10 6-18 7-36 7-54 0L5 10z" />
+                                                <path d="M72 3l7 7-9-2 2-5z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-zinc-400 font-mono">CARTE CADEAU</span>
+                                            <span class="text-[8px] font-bold text-orange-400 font-mono">14-15 Car.</span>
+                                        </div>
                                     </div>
-                                </div>
-                            @elseif(str_contains($vt->name, 'Apple'))
-                                <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-100 via-white to-zinc-200 p-3 text-slate-800 flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-300">
-                                    <div class="flex justify-between items-start">
-                                        <span class="text-[9px] font-bold tracking-tight text-slate-800">Apple Card</span>
-                                        <svg class="h-3.5 w-3.5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z" />
-                                        </svg>
+                                @elseif(str_contains($vt->name, 'Steam'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-slate-600/30">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-bold tracking-wider text-slate-300 uppercase">STEAM</span>
+                                            <svg class="h-3.5 w-3.5 text-slate-300" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-slate-400 font-mono">PORTEFEUILLE</span>
+                                            <span class="text-[8px] font-bold text-slate-300 font-mono">15 Caract.</span>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-between items-end">
-                                        <span class="text-[7px] text-slate-500 font-mono">STORE & MUSIC</span>
-                                        <span class="text-[8px] font-bold text-slate-900 font-mono">16 Caract.</span>
+                                @elseif(str_contains($vt->name, 'Google Play'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-indigo-800 via-purple-900 to-blue-900 p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-indigo-700/50">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-bold tracking-tight text-white uppercase">Google
+                                                Play</span>
+                                            <div class="flex gap-0.5">
+                                                <span class="h-1.5 w-1.5 bg-red-400 rounded-full"></span>
+                                                <span class="h-1.5 w-1.5 bg-yellow-400 rounded-full"></span>
+                                                <span class="h-1.5 w-1.5 bg-green-400 rounded-full"></span>
+                                                <span class="h-1.5 w-1.5 bg-blue-400 rounded-full"></span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-indigo-300 font-mono">GIFT CARD</span>
+                                            <span class="text-[8px] font-bold text-indigo-200 font-mono">16 Chiffres</span>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
-                            <span class="text-[11px] font-extrabold mt-2.5 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
-                        </div>
+                                @elseif(str_contains($vt->name, 'Netflix'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-red-650 via-red-700 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-red-800/30">
+                                        <div class="flex justify-between items-start">
+                                            <span
+                                                class="text-[10px] font-black tracking-tighter text-red-650 uppercase">NETFLIX</span>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-neutral-400 font-mono">MEMBERSHIP</span>
+                                            <span class="text-[8px] font-bold text-white font-mono">11-16 Car.</span>
+                                        </div>
+                                    </div>
+                                @elseif(str_contains($vt->name, 'Apple'))
+                                    <div
+                                        class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-zinc-100 via-white to-zinc-200 p-3 text-slate-800 flex flex-col justify-between shadow-sm relative overflow-hidden border border-zinc-300">
+                                        <div class="flex justify-between items-start">
+                                            <span class="text-[9px] font-bold tracking-tight text-slate-800">Apple Card</span>
+                                            <svg class="h-3.5 w-3.5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.21.67-2.93 1.49-.62.69-1.16 1.84-1.01 2.96 1.12.09 2.27-.57 2.95-1.39z" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[7px] text-slate-500 font-mono">STORE & MUSIC</span>
+                                            <span class="text-[8px] font-bold text-slate-900 font-mono">16 Caract.</span>
+                                        </div>
+                                    </div>
+                                @endif
+                                <span
+                                    class="text-[11px] font-extrabold mt-2.5 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
+                            </div>
                         @endforeach
                     @endforeach
                 </div>
@@ -624,7 +660,8 @@ new class extends Component {
             <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
                 <div class="lg:col-span-5">
                     <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                        {{ __('Pourquoi choisir notre plateforme ?') }}</h2>
+                        {{ __('Pourquoi choisir notre plateforme ?') }}
+                    </h2>
                     <p class="mt-4 text-slate-600">
                         {{ __('Notre système sécurisé vous assure un traitement transparent, ultra-rapide et conforme aux exigences des principaux fournisseurs de coupons prépayés.') }}
                     </p>
@@ -672,7 +709,8 @@ new class extends Component {
                      }">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-lg font-bold text-slate-900">
-                            {{ __('Avis des derniers utilisateurs en Europe') }}</h3>
+                            {{ __('Avis des derniers utilisateurs en Europe') }}
+                        </h3>
                         <div class="flex items-center gap-1.5">
                             <button
                                 @click="prev(); clearInterval(autoplayInterval); autoplayInterval = setInterval(() => { next() }, 5000)"
@@ -710,7 +748,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Jean-Marc D.</span>
-                                <img src="/images/flags/fr.png" alt="France" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/fr.png" alt="France"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -727,7 +766,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Amélie L.</span>
-                                <img src="/images/flags/be.png" alt="Belgique" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/be.png" alt="Belgique"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -744,7 +784,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Lukas M.</span>
-                                <img src="/images/flags/de.png" alt="Deutschland" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/de.png" alt="Deutschland"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -761,7 +802,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Sofía G.</span>
-                                <img src="/images/flags/es.png" alt="España" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/es.png" alt="España"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -778,7 +820,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Alessandro V.</span>
-                                <img src="/images/flags/it.png" alt="Italia" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/it.png" alt="Italia"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -795,7 +838,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Daan de J.</span>
-                                <img src="/images/flags/nl.png" alt="Nederland" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/nl.png" alt="Nederland"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -812,7 +856,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Katarzyna W.</span>
-                                <img src="/images/flags/pl.png" alt="Polska" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/pl.png" alt="Polska"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -829,7 +874,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Manuel S.</span>
-                                <img src="/images/flags/pt.png" alt="Portugal" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/pt.png" alt="Portugal"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -846,7 +892,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Emma B.</span>
-                                <img src="/images/flags/gb.png" alt="United Kingdom" class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/gb.png" alt="United Kingdom"
+                                    class="h-3.5 w-5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
 
@@ -863,7 +910,8 @@ new class extends Component {
                             </p>
                             <div class="flex items-center gap-1.5 mt-4 text-xs font-bold text-slate-500">
                                 <span>Hansruedi B.</span>
-                                <img src="/images/flags/ch.png" alt="Schweiz" class="h-3.5 w-3.5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
+                                <img src="/images/flags/ch.png" alt="Schweiz"
+                                    class="h-3.5 w-3.5 rounded-sm object-cover shadow-sm inline-block align-middle ml-1">
                             </div>
                         </div>
                     </div>
@@ -887,7 +935,8 @@ new class extends Component {
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                    {{ __('Où acheter des tickets ou recharges ?') }}</h2>
+                    {{ __('Où acheter des tickets ou recharges ?') }}
+                </h2>
                 <p class="mx-auto mt-4 max-w-2xl text-base text-slate-600">
                     {{ __('Achetez vos coupons de manière sécurisée auprès de nos revendeurs partenaires en ligne ou dans vos commerces de proximité habituels.') }}
                 </p>
@@ -905,7 +954,8 @@ new class extends Component {
                         <span>{{ __('Achat Sécurisé en Ligne (Livraison Instantanée)') }}</span>
                     </h3>
                     <p class="text-sm text-slate-600 mb-6">
-                        {{ __('Obtenez vos codes de recharge par e-mail en quelques secondes 24h/24 et 7j/7.') }}</p>
+                        {{ __('Obtenez vos codes de recharge par e-mail en quelques secondes 24h/24 et 7j/7.') }}
+                    </p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- Boutique 1 : Refilled.com (Transcash) -->
@@ -914,13 +964,17 @@ new class extends Component {
                             <div class="space-y-2">
                                 <!-- Logo Refilled.com -->
                                 <svg class="h-6 w-32 text-teal-650" viewBox="0 0 120 24" fill="currentColor">
-                                    <circle cx="10" cy="12" r="7" fill="#0d9488" fill-opacity="0.15" stroke="#0d9488" stroke-width="1.5"/>
-                                    <path d="M10 8v5l3 2" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                                    <circle cx="10" cy="12" r="7" fill="#0d9488" fill-opacity="0.15" stroke="#0d9488"
+                                        stroke-width="1.5" />
+                                    <path d="M10 8v5l3 2" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round"
+                                        fill="none" />
                                     <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">refilled<tspan fill="#0d9488">.com</tspan></text>
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">refilled<tspan
+                                            fill="#0d9488">.com</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-450">
-                                    {{ __('Achetez vos recharges Transcash sur Refilled.com') }}</p>
+                                    {{ __('Achetez vos recharges Transcash sur Refilled.com') }}
+                                </p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
@@ -936,12 +990,15 @@ new class extends Component {
                                 <!-- Logo Recharge.com -->
                                 <svg class="h-6 w-32 text-indigo-600" viewBox="0 0 120 24" fill="currentColor">
                                     <circle cx="10" cy="12" r="7" fill="none" stroke="#4f46e5" stroke-width="2" />
-                                    <path d="M12 9l3 3-3 3" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M12 9l3 3-3 3" fill="none" stroke="#4f46e5" stroke-width="2"
+                                        stroke-linecap="round" />
                                     <text x="24" y="16" font-family="'Inter', sans-serif" font-weight="900"
-                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">recharge<tspan fill="#4f46e5">.com</tspan></text>
+                                        font-size="11" fill="#1e293b" letter-spacing="-0.5">recharge<tspan
+                                            fill="#4f46e5">.com</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-450">
-                                    {{ __('Tickets Transcash officiels sur Recharge.com') }}</p>
+                                    {{ __('Tickets Transcash officiels sur Recharge.com') }}
+                                </p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
@@ -964,7 +1021,8 @@ new class extends Component {
                                             fill="#ef4444">.fr</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-450">
-                                    {{ __('Achetez vos tickets Transcash directement sur Recharge.fr') }}</p>
+                                    {{ __('Achetez vos tickets Transcash directement sur Recharge.fr') }}
+                                </p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
@@ -988,7 +1046,8 @@ new class extends Component {
                                             .com</tspan></text>
                                 </svg>
                                 <p class="text-[11px] text-slate-455">
-                                    {{ __('Achetez vos codes Transcash directement sur Dundle') }}</p>
+                                    {{ __('Achetez vos codes Transcash directement sur Dundle') }}
+                                </p>
                             </div>
                             <div
                                 class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 group-hover:text-blue-700">
@@ -1021,7 +1080,8 @@ new class extends Component {
                                     1</div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm">
-                                        {{ __('Bureaux de Tabac & Buralistes') }}</h4>
+                                        {{ __('Bureaux de Tabac & Buralistes') }}
+                                    </h4>
                                     <p class="text-xs text-slate-500 mt-0.5">
                                         {{ __('Demandez directement au comptoir une recharge du montant souhaité (Transcash, PCS, Neosurf...). Un ticket contenant le code secret vous sera imprimé.') }}
                                     </p>
@@ -1033,7 +1093,8 @@ new class extends Component {
                                     2</div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm">
-                                        {{ __('Maisons de la Presse & Relais') }}</h4>
+                                        {{ __('Maisons de la Presse & Relais') }}
+                                    </h4>
                                     <p class="text-xs text-slate-500 mt-0.5">
                                         {{ __('La plupart des commerces de presse dispose de terminaux de rechargement officiels agréés.') }}
                                     </p>
@@ -1045,7 +1106,8 @@ new class extends Component {
                                     3</div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm">
-                                        {{ __('Supermarchés & Stations-Service') }}</h4>
+                                        {{ __('Supermarchés & Stations-Service') }}
+                                    </h4>
                                     <p class="text-xs text-slate-500 mt-0.5">
                                         {{ __('Les rayons cartes cadeaux des grandes enseignes (Carrefour, Leclerc, Auchan...) disposent de cartes physiques pour Amazon, Google Play, Steam, Apple et Netflix.') }}
                                     </p>
@@ -1062,7 +1124,8 @@ new class extends Component {
     <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 text-center mb-12">
-                {{ __('Foire aux questions') }}</h2>
+                {{ __('Foire aux questions') }}
+            </h2>
             <div class="space-y-4">
 
                 <!-- Q1 -->
