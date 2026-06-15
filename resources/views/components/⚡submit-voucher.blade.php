@@ -286,7 +286,7 @@ new class extends Component {
 
                 <!-- Right Side Visual / Image Carousel Mockup -->
                 <div class="mt-12 lg:mt-0 lg:col-span-6 relative flex justify-center z-10">
-                    <div class="w-full max-w-lg aspect-[4/3] bg-white rounded-2xl border border-slate-200 p-2 shadow-2xl overflow-hidden relative"
+                    <div class="w-full max-w-md aspect-[1.5] bg-white rounded-2xl border border-slate-200 p-2 shadow-2xl overflow-hidden relative"
                          x-data="{
                              activeSlide: 0,
                              totalSlides: 3,
@@ -359,11 +359,29 @@ new class extends Component {
     </section>
 
     <!-- Recharges & Coupons Supportés Carousel Section -->
-    <section id="coupons-supportes" class="py-16 bg-white border-b border-slate-150"
+    <section id="coupons-supportes" class="py-12 bg-white border-b border-slate-150"
              x-data="{
-                 scrollLeft() { this.$refs.carousel.scrollBy({ left: -300, behavior: 'smooth' }) },
-                 scrollRight() { this.$refs.carousel.scrollBy({ left: 300, behavior: 'smooth' }) }
-             }">
+                 scrollInterval: null,
+                 scrollLeft() { this.$refs.carousel.scrollBy({ left: -210, behavior: 'smooth' }) },
+                 scrollRight() { 
+                     const c = this.$refs.carousel;
+                     if (c.scrollLeft + c.offsetWidth >= c.scrollWidth - 20) {
+                         c.scrollTo({ left: 0, behavior: 'smooth' });
+                     } else {
+                         c.scrollBy({ left: 210, behavior: 'smooth' });
+                     }
+                 },
+                 init() {
+                     this.scrollInterval = setInterval(() => {
+                         this.scrollRight();
+                     }, 4000);
+                 },
+                 stopAuto() {
+                     clearInterval(this.scrollInterval);
+                 }
+             }"
+             @mouseenter="stopAuto()"
+             @mouseleave="scrollInterval = setInterval(() => { scrollRight() }, 4000)">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
                 <div class="text-left">
@@ -404,7 +422,7 @@ new class extends Component {
                         }
                     </style>
                     @foreach($voucherTypes as $vt)
-                        <div class="w-60 sm:w-64 shrink-0 snap-center group relative flex flex-col items-center p-2 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
+                        <div class="w-44 sm:w-48 shrink-0 snap-center group relative flex flex-col items-center p-1.5 bg-white rounded-2xl transition-all duration-300 hover:scale-[1.03] border border-slate-200/60 shadow-sm hover:shadow-md">
                             @if(str_contains($vt->name, 'Transcash'))
                                 <div class="w-full aspect-[1.586] rounded-xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black p-3 text-white flex flex-col justify-between shadow-sm relative overflow-hidden border border-neutral-700/50">
                                     <div class="flex justify-between items-start">
@@ -526,7 +544,7 @@ new class extends Component {
                                     </div>
                                 </div>
                             @endif
-                            <span class="text-[12px] font-black mt-3 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
+                            <span class="text-[11px] font-extrabold mt-2.5 text-slate-800 text-center tracking-tight truncate w-full">{{ $vt->name }}</span>
                         </div>
                     @endforeach
                 </div>
