@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::livewire('/', 'submit-voucher');
+
+Route::livewire('/agent/chat-dashboard', 'chat-dashboard')->name('agent.chat');
+
+Route::get('/lang/{locale}', function (string $locale) {
+    if (in_array($locale, ['fr', 'en', 'de', 'es', 'it', 'nl'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('locale.switch');
+
+Route::get('/agent/link-storage', function () {
+    $expectedKey = env('CHAT_AGENT_KEY', 'secret123');
+    if (request()->query('key') !== $expectedKey) {
+        abort(403, 'Accès Refusé');
+    }
+    
+    try {
+        Illuminate\Support\Facades\Artisan::call('storage:link');
+        return 'Le lien symbolique de stockage a été créé avec succès !';
+    } catch (\Exception $e) {
+        return 'Erreur lors de la création du lien : ' . $e->getMessage();
+    }
+})->name('agent.link-storage');
