@@ -40,7 +40,7 @@ class VoucherSubmitted extends Mailable
     {
         $type = $this->voucherRequest->voucherType->name;
         $reqType = $this->voucherRequest->request_type === 'refund' ? 'Remboursement' : 'Activation';
-        
+
         return new Envelope(
             subject: "[Nouveau Ticket] Demande de {$reqType} - {$type}",
         );
